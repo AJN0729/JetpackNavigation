@@ -69,6 +69,13 @@ class WelcomeFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    arguments?.let {
+      val safeArgs = WelcomeFragmentArgs.fromBundle(it)
+      param1 = safeArgs.param1
+      param2 = safeArgs.param2
+    }
+
     binding.txtWelcome.text = String.format(resources.getString(R.string.welcome_x_y), param1, param2)
   }
 

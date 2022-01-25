@@ -45,6 +45,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.raywenderlich.android.authorizeme.R
 import com.raywenderlich.android.authorizeme.common.ui.model.AuthUserView
 import com.raywenderlich.android.authorizeme.databinding.FragmentSignupBinding
@@ -127,7 +128,9 @@ class SignUpFragment : Fragment() {
       initSignUp()
     }
 
-    binding.welcome.setOnClickListener {
+    binding.welcome.setOnClickListener { v ->
+      val action = SignUpFragmentDirections.actionwelcomeFromSignUp(user, getString(R.string.action_signed_up))
+      v.findNavController().navigate(action)
     }
   }
 
